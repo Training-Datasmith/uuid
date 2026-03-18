@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Codec;
 
+use function hex2bin;
+use function implode;
+
 use InvalidArgumentException;
 use Mockery;
+
+use function pack;
+
 use PHPUnit\Framework\MockObject\MockObject;
 use Ramsey\Uuid\Builder\UuidBuilderInterface;
 use Ramsey\Uuid\Codec\StringCodec;
 use Ramsey\Uuid\Rfc4122\Fields;
+
 use Ramsey\Uuid\Rfc4122\FieldsInterface;
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\UuidInterface;
-
-use function hex2bin;
-use function implode;
-use function pack;
 
 class StringCodecTest extends TestCase
 {

@@ -14,11 +14,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Generator;
 
+use function hash;
+
 use Ramsey\Uuid\Exception\NameException;
 use Ramsey\Uuid\UuidInterface;
-use ValueError;
 
-use function hash;
+use ValueError;
 
 /**
  * DefaultNameGenerator generates strings of binary data based on a namespace, name, and hashing algorithm

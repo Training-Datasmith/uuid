@@ -14,21 +14,25 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Nonstandard;
 
+use function bin2hex;
+use function dechex;
+use function hexdec;
+
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Fields\SerializableFieldsTrait;
+
 use Ramsey\Uuid\Rfc4122\FieldsInterface;
 use Ramsey\Uuid\Rfc4122\VariantTrait;
 use Ramsey\Uuid\Type\Hexadecimal;
 
-use function bin2hex;
-use function dechex;
-use function hexdec;
 use function sprintf;
 use function str_pad;
-use function strlen;
-use function substr;
 
 use const STR_PAD_LEFT;
+
+use function strlen;
+
+use function substr;
 
 /**
  * Nonstandard UUID fields do not conform to the RFC 9562 (formerly RFC 4122) standard

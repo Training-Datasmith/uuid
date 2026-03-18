@@ -14,24 +14,27 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Converter\Time;
 
+use function count;
+use function dechex;
+use function explode;
+use function is_float;
+use function is_int;
+
 use Ramsey\Uuid\Converter\TimeConverterInterface;
+
 use Ramsey\Uuid\Math\BrickMathCalculator;
 use Ramsey\Uuid\Math\CalculatorInterface;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
 use Ramsey\Uuid\Type\Time;
 
-use function count;
-use function dechex;
-use function explode;
-use function is_float;
-use function is_int;
 use function str_pad;
-use function strlen;
-use function substr;
 
 use const STR_PAD_LEFT;
 use const STR_PAD_RIGHT;
+
+use function strlen;
+use function substr;
 
 /**
  * PhpTimeConverter uses built-in PHP functions and standard math operations available to the PHP programming language

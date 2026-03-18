@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Rfc4122;
 
+use function hex2bin;
+
 use Mockery;
 use Ramsey\Uuid\Exception\InvalidBytesException;
 use Ramsey\Uuid\Rfc4122\Fields;
 use Ramsey\Uuid\Rfc4122\VariantTrait;
+
 use Ramsey\Uuid\Test\TestCase;
 
-use function hex2bin;
 use function str_replace;
 
 class VariantTraitTest extends TestCase

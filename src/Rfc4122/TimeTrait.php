@@ -17,11 +17,12 @@ namespace Ramsey\Uuid\Rfc4122;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Ramsey\Uuid\Exception\DateTimeException;
-use Throwable;
 
 use function str_pad;
 
 use const STR_PAD_LEFT;
+
+use Throwable;
 
 /**
  * Provides common functionality for getting the time from a time-based UUID

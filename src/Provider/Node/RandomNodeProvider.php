@@ -14,19 +14,22 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Provider\Node;
 
-use Ramsey\Uuid\Exception\RandomSourceException;
-use Ramsey\Uuid\Provider\NodeProviderInterface;
-use Ramsey\Uuid\Type\Hexadecimal;
-use Throwable;
-
 use function bin2hex;
 use function dechex;
 use function hex2bin;
 use function hexdec;
+
+use Ramsey\Uuid\Exception\RandomSourceException;
+use Ramsey\Uuid\Provider\NodeProviderInterface;
+use Ramsey\Uuid\Type\Hexadecimal;
+
 use function str_pad;
-use function substr;
 
 use const STR_PAD_LEFT;
+
+use function substr;
+
+use Throwable;
 
 /**
  * RandomNodeProvider generates a random node ID

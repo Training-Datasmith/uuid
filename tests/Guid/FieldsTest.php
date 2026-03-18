@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Guid;
 
+use function hex2bin;
+
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Guid\Fields;
 use Ramsey\Uuid\Test\TestCase;
+
 use Ramsey\Uuid\Type\Hexadecimal;
 
-use function hex2bin;
 use function serialize;
 use function unserialize;
 

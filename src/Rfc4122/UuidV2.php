@@ -14,15 +14,16 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Rfc4122;
 
+use function hexdec;
+
 use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Converter\TimeConverterInterface;
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Rfc4122\FieldsInterface as Rfc4122FieldsInterface;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-use Ramsey\Uuid\Uuid;
 
-use function hexdec;
+use Ramsey\Uuid\Uuid;
 
 /**
  * DCE Security version, or version 2, UUIDs include local domain identifier, local ID for the specified domain, and

@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Provider\Dce;
 
+use function array_merge;
+
 use Mockery;
+use phpmock\mockery\PHPMockery;
 use Ramsey\Uuid\Exception\DceSecurityException;
 use Ramsey\Uuid\Provider\Dce\SystemDceSecurityProvider;
-use Ramsey\Uuid\Test\TestCase;
-use phpmock\mockery\PHPMockery;
 
-use function array_merge;
+use Ramsey\Uuid\Test\TestCase;
 
 class SystemDceSecurityProviderTest extends TestCase
 {

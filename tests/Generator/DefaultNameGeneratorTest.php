@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Generator;
 
+use function hash;
+
 use Ramsey\Uuid\Exception\NameException;
 use Ramsey\Uuid\Generator\DefaultNameGenerator;
 use Ramsey\Uuid\Test\TestCase;
-use Ramsey\Uuid\Uuid;
 
-use function hash;
+use Ramsey\Uuid\Uuid;
 
 class DefaultNameGeneratorTest extends TestCase
 {

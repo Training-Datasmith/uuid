@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Codec;
 
+use function hex2bin;
+
 use Mockery;
+
+use function pack;
+
 use PHPUnit\Framework\MockObject\MockObject;
 use Ramsey\Uuid\Builder\UuidBuilderInterface;
 use Ramsey\Uuid\Codec\GuidStringCodec;
@@ -13,11 +18,9 @@ use Ramsey\Uuid\Converter\TimeConverterInterface;
 use Ramsey\Uuid\Guid\Fields;
 use Ramsey\Uuid\Guid\Guid;
 use Ramsey\Uuid\Guid\GuidBuilder;
+
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\UuidInterface;
-
-use function hex2bin;
-use function pack;
 
 class GuidStringCodecTest extends TestCase
 {

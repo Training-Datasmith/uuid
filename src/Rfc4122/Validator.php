@@ -14,10 +14,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Rfc4122;
 
+use function preg_match;
+
 use Ramsey\Uuid\Uuid;
+
 use Ramsey\Uuid\Validator\ValidatorInterface;
 
-use function preg_match;
 use function str_replace;
 
 /**

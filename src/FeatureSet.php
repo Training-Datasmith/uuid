@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid;
 
+use const PHP_INT_SIZE;
+
 use Ramsey\Uuid\Builder\FallbackBuilder;
 use Ramsey\Uuid\Builder\UuidBuilderInterface;
 use Ramsey\Uuid\Codec\CodecInterface;
@@ -50,9 +52,8 @@ use Ramsey\Uuid\Provider\Time\SystemTimeProvider;
 use Ramsey\Uuid\Provider\TimeProviderInterface;
 use Ramsey\Uuid\Rfc4122\UuidBuilder as Rfc4122UuidBuilder;
 use Ramsey\Uuid\Validator\GenericValidator;
-use Ramsey\Uuid\Validator\ValidatorInterface;
 
-use const PHP_INT_SIZE;
+use Ramsey\Uuid\Validator\ValidatorInterface;
 
 /**
  * FeatureSet detects and exposes available features in the current environment

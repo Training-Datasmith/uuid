@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Type;
 
+use function json_encode;
+
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Test\TestCase;
+
 use Ramsey\Uuid\Type\Integer as IntegerObject;
 
-use function json_encode;
 use function serialize;
 use function sprintf;
 use function unserialize;

@@ -14,10 +14,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Benchmark;
 
+use function array_map;
+
 use Ramsey\Uuid\Uuid;
+
 use Ramsey\Uuid\UuidInterface;
 
-use function array_map;
 use function serialize;
 
 final class UuidSerializationBench

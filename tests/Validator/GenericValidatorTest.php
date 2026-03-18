@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Validator;
 
+use function array_merge;
+
 use Ramsey\Uuid\Test\TestCase;
+
 use Ramsey\Uuid\Validator\GenericValidator;
 
-use function array_merge;
 use function strtoupper;
 
 class GenericValidatorTest extends TestCase

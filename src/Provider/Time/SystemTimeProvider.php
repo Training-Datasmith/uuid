@@ -14,10 +14,11 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Provider\Time;
 
-use Ramsey\Uuid\Provider\TimeProviderInterface;
-use Ramsey\Uuid\Type\Time;
-
 use function gettimeofday;
+
+use Ramsey\Uuid\Provider\TimeProviderInterface;
+
+use Ramsey\Uuid\Type\Time;
 
 /**
  * SystemTimeProvider retrieves the current time using built-in PHP functions

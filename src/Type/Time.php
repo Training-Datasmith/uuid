@@ -14,13 +14,16 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Type;
 
-use Ramsey\Uuid\Exception\UnsupportedOperationException;
-use Ramsey\Uuid\Type\Integer as IntegerObject;
-use ValueError;
-
 use function json_decode;
 use function json_encode;
+
+use Ramsey\Uuid\Exception\UnsupportedOperationException;
+
+use Ramsey\Uuid\Type\Integer as IntegerObject;
+
 use function sprintf;
+
+use ValueError;
 
 /**
  * A value object representing a timestamp

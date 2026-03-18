@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Encoder;
 
+use function hex2bin;
+use function implode;
+
 use Mockery;
 use PHPUnit\Framework\MockObject\MockObject;
 use Ramsey\Uuid\Builder\UuidBuilderInterface;
@@ -11,11 +14,9 @@ use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Codec\TimestampLastCombCodec;
 use Ramsey\Uuid\Rfc4122\Fields;
 use Ramsey\Uuid\Rfc4122\FieldsInterface;
+
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\UuidInterface;
-
-use function hex2bin;
-use function implode;
 
 class TimestampLastCombCodecTest extends TestCase
 {

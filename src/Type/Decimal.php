@@ -14,12 +14,14 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Type;
 
-use Ramsey\Uuid\Exception\InvalidArgumentException;
-use ValueError;
-
 use function is_numeric;
+
+use Ramsey\Uuid\Exception\InvalidArgumentException;
+
 use function sprintf;
 use function str_starts_with;
+
+use ValueError;
 
 /**
  * A value object representing a decimal

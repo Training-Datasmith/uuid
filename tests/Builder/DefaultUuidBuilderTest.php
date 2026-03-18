@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Builder;
 
+use function hex2bin;
+use function implode;
+
 use Mockery;
 use Ramsey\Uuid\Builder\DefaultUuidBuilder;
 use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Converter\TimeConverterInterface;
+
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\Uuid;
-
-use function hex2bin;
-use function implode;
 
 class DefaultUuidBuilderTest extends TestCase
 {

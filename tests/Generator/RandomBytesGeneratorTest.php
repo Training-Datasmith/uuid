@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Ramsey\Uuid\Test\Generator;
 
 use Exception;
-use Ramsey\Uuid\Exception\RandomSourceException;
-use Ramsey\Uuid\Generator\RandomBytesGenerator;
-use Ramsey\Uuid\Test\TestCase;
-use phpmock\mockery\PHPMockery;
 
 use function hex2bin;
+
+use phpmock\mockery\PHPMockery;
+use Ramsey\Uuid\Exception\RandomSourceException;
+use Ramsey\Uuid\Generator\RandomBytesGenerator;
+
+use Ramsey\Uuid\Test\TestCase;
 
 class RandomBytesGeneratorTest extends TestCase
 {

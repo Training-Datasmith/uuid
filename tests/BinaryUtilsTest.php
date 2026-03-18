@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test;
 
-use Ramsey\Uuid\BinaryUtils;
-
 use function dechex;
+
+use Ramsey\Uuid\BinaryUtils;
 
 class BinaryUtilsTest extends TestCase
 {

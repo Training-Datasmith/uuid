@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Nonstandard;
 
+use function hex2bin;
+
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Nonstandard\Fields;
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\Type\Hexadecimal;
+
 use Ramsey\Uuid\Uuid;
 
-use function hex2bin;
 use function serialize;
 use function str_replace;
 use function unserialize;

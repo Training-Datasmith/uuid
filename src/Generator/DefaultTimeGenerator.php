@@ -14,25 +14,29 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Generator;
 
-use Ramsey\Uuid\Converter\TimeConverterInterface;
-use Ramsey\Uuid\Exception\InvalidArgumentException;
-use Ramsey\Uuid\Exception\RandomSourceException;
-use Ramsey\Uuid\Exception\TimeSourceException;
-use Ramsey\Uuid\Provider\NodeProviderInterface;
-use Ramsey\Uuid\Provider\TimeProviderInterface;
-use Ramsey\Uuid\Type\Hexadecimal;
-use Throwable;
-
 use function dechex;
 use function hex2bin;
 use function is_int;
 use function pack;
 use function preg_match;
+
+use Ramsey\Uuid\Converter\TimeConverterInterface;
+use Ramsey\Uuid\Exception\InvalidArgumentException;
+use Ramsey\Uuid\Exception\RandomSourceException;
+
+use Ramsey\Uuid\Exception\TimeSourceException;
+use Ramsey\Uuid\Provider\NodeProviderInterface;
+use Ramsey\Uuid\Provider\TimeProviderInterface;
+use Ramsey\Uuid\Type\Hexadecimal;
+
 use function sprintf;
 use function str_pad;
-use function strlen;
 
 use const STR_PAD_LEFT;
+
+use function strlen;
+
+use Throwable;
 
 /**
  * DefaultTimeGenerator generates strings of binary data based on a node ID, clock sequence, and the current time

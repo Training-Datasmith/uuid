@@ -14,7 +14,13 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid;
 
+use function bin2hex;
+
 use DateTimeInterface;
+
+use function hex2bin;
+use function pack;
+
 use Ramsey\Uuid\Builder\UuidBuilderInterface;
 use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Converter\NumberConverterInterface;
@@ -29,20 +35,20 @@ use Ramsey\Uuid\Lazy\LazyUuidFromString;
 use Ramsey\Uuid\Provider\NodeProviderInterface;
 use Ramsey\Uuid\Provider\Time\FixedTimeProvider;
 use Ramsey\Uuid\Type\Hexadecimal;
+
 use Ramsey\Uuid\Type\Integer as IntegerObject;
 use Ramsey\Uuid\Type\Time;
 use Ramsey\Uuid\Validator\ValidatorInterface;
 
-use function bin2hex;
-use function hex2bin;
-use function pack;
 use function str_pad;
+
+use const STR_PAD_LEFT;
+
 use function strtolower;
 use function substr;
 use function substr_replace;
-use function unpack;
 
-use const STR_PAD_LEFT;
+use function unpack;
 
 class UuidFactory implements UuidFactoryInterface
 {

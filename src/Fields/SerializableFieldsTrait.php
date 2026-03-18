@@ -14,11 +14,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Fields;
 
-use ValueError;
-
 use function base64_decode;
+
 use function sprintf;
 use function strlen;
+
+use ValueError;
 
 /**
  * Provides common serialization functionality to fields

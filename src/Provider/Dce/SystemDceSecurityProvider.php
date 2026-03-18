@@ -14,20 +14,22 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Provider\Dce;
 
+use function escapeshellarg;
+use function preg_split;
+
+use const PREG_SPLIT_NO_EMPTY;
+
 use Ramsey\Uuid\Exception\DceSecurityException;
 use Ramsey\Uuid\Provider\DceSecurityProviderInterface;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
 
-use function escapeshellarg;
-use function preg_split;
 use function str_getcsv;
 use function strrpos;
 use function strtolower;
 use function strtoupper;
 use function substr;
-use function trim;
 
-use const PREG_SPLIT_NO_EMPTY;
+use function trim;
 
 /**
  * SystemDceSecurityProvider retrieves the user or group identifiers from the system

@@ -19,12 +19,14 @@ use DateTimeInterface;
 use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Exception\DateTimeException;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
-use Throwable;
 
 use function str_pad;
-use function substr;
 
 use const STR_PAD_LEFT;
+
+use function substr;
+
+use Throwable;
 
 /**
  * This trait encapsulates deprecated methods for ramsey/uuid; this trait and its methods will be removed in ramsey/uuid 5.0.0.

@@ -14,8 +14,17 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid;
 
+use function assert;
+
 use BadMethodCallException;
+
+use function bin2hex;
+
 use DateTimeInterface;
+
+use function method_exists;
+use function preg_match;
+
 use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Converter\TimeConverterInterface;
@@ -23,21 +32,19 @@ use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
 use Ramsey\Uuid\Fields\FieldsInterface;
 use Ramsey\Uuid\Lazy\LazyUuidFromString;
+
 use Ramsey\Uuid\Rfc4122\FieldsInterface as Rfc4122FieldsInterface;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-use ValueError;
 
-use function assert;
-use function bin2hex;
-use function method_exists;
-use function preg_match;
 use function sprintf;
 use function str_replace;
 use function strcmp;
 use function strlen;
 use function strtolower;
 use function substr;
+
+use ValueError;
 
 /**
  * Uuid provides constants and static methods for working with and generating UUIDs

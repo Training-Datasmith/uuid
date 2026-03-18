@@ -14,14 +14,17 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Type;
 
-use Ramsey\Uuid\Exception\InvalidArgumentException;
-use ValueError;
-
 use function assert;
 use function is_numeric;
+
 use function preg_match;
+
+use Ramsey\Uuid\Exception\InvalidArgumentException;
+
 use function sprintf;
 use function substr;
+
+use ValueError;
 
 /**
  * A value object representing an integer

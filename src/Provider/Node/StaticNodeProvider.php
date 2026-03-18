@@ -14,16 +14,19 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Provider\Node;
 
+use function dechex;
+use function hexdec;
+
 use Ramsey\Uuid\Exception\InvalidArgumentException;
+
 use Ramsey\Uuid\Provider\NodeProviderInterface;
 use Ramsey\Uuid\Type\Hexadecimal;
 
-use function dechex;
-use function hexdec;
 use function str_pad;
-use function substr;
 
 use const STR_PAD_LEFT;
+
+use function substr;
 
 /**
  * StaticNodeProvider provides a static node value with the multicast bit set

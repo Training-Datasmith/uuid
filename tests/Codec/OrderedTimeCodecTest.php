@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Codec;
 
+use function hex2bin;
+
 use Mockery;
+
+use function pack;
+
 use PHPUnit\Framework\MockObject\MockObject;
 use Ramsey\Uuid\Builder\DefaultUuidBuilder;
 use Ramsey\Uuid\Builder\UuidBuilderInterface;
@@ -21,11 +26,10 @@ use Ramsey\Uuid\Nonstandard\UuidBuilder;
 use Ramsey\Uuid\Rfc4122\Fields;
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\Uuid;
+
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidInterface;
 
-use function hex2bin;
-use function pack;
 use function serialize;
 use function str_replace;
 use function unserialize;

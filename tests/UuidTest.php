@@ -5,10 +5,19 @@ declare(strict_types=1);
 namespace Ramsey\Uuid\Test;
 
 use BadMethodCallException;
+
+use function base64_decode;
+use function base64_encode;
+
 use Brick\Math\BigDecimal;
 use Brick\Math\RoundingMode;
 use DateTimeImmutable;
 use DateTimeInterface;
+
+use function gmdate;
+use function hex2bin;
+use function json_encode;
+
 use Mockery;
 use Mockery\MockInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -38,19 +47,19 @@ use Ramsey\Uuid\Type\Time;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidFactoryInterface;
+
 use Ramsey\Uuid\UuidInterface;
 use Ramsey\Uuid\Validator\GenericValidator;
 use Ramsey\Uuid\Validator\ValidatorInterface;
-use Stringable;
+
+use function serialize;
+
 use stdClass;
 
-use function base64_decode;
-use function base64_encode;
-use function gmdate;
-use function hex2bin;
-use function json_encode;
-use function serialize;
 use function str_pad;
+
+use Stringable;
+
 use function strlen;
 use function strtotime;
 use function strtoupper;

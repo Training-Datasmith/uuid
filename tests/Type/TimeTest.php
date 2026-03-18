@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Type;
 
+use function json_encode;
+
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
+
 use Ramsey\Uuid\Type\Time;
 
-use function json_encode;
 use function serialize;
 use function unserialize;
 

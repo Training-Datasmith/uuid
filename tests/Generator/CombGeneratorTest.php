@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Generator;
 
+use function bin2hex;
+use function dechex;
+use function hex2bin;
+
 use PHPUnit\Framework\MockObject\MockObject;
 use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Exception\InvalidArgumentException;
+
 use Ramsey\Uuid\Generator\CombGenerator;
 use Ramsey\Uuid\Generator\RandomGeneratorInterface;
 use Ramsey\Uuid\Test\TestCase;
 
-use function bin2hex;
-use function dechex;
-use function hex2bin;
 use function str_pad;
 
 use const STR_PAD_LEFT;

@@ -4,15 +4,19 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Provider\Node;
 
+use function bin2hex;
+
 use Exception;
+
+use function hex2bin;
+use function hexdec;
+
+use phpmock\mockery\PHPMockery;
+
 use Ramsey\Uuid\Exception\RandomSourceException;
 use Ramsey\Uuid\Provider\Node\RandomNodeProvider;
 use Ramsey\Uuid\Test\TestCase;
-use phpmock\mockery\PHPMockery;
 
-use function bin2hex;
-use function hex2bin;
-use function hexdec;
 use function sprintf;
 use function substr;
 

@@ -6,6 +6,9 @@ namespace Ramsey\Uuid\Test\Rfc4122;
 
 use DateTimeInterface;
 use Mockery;
+
+use const PHP_VERSION_ID;
+
 use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Converter\Number\GenericNumberConverter;
 use Ramsey\Uuid\Converter\NumberConverterInterface;
@@ -25,9 +28,8 @@ use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
 use Ramsey\Uuid\Type\Time;
 use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidFactory;
 
-use const PHP_VERSION_ID;
+use Ramsey\Uuid\UuidFactory;
 
 class UuidV2Test extends TestCase
 {

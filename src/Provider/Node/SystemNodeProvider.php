@@ -14,27 +14,32 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Provider\Node;
 
-use Ramsey\Uuid\Exception\NodeException;
-use Ramsey\Uuid\Provider\NodeProviderInterface;
-use Ramsey\Uuid\Type\Hexadecimal;
-
 use function array_filter;
 use function array_map;
 use function array_walk;
+
 use function count;
+
+use const GLOB_NOSORT;
+
 use function ob_get_clean;
 use function ob_start;
 use function preg_match;
 use function preg_match_all;
+
+use const PREG_PATTERN_ORDER;
+
+use Ramsey\Uuid\Exception\NodeException;
+use Ramsey\Uuid\Provider\NodeProviderInterface;
+use Ramsey\Uuid\Type\Hexadecimal;
+
 use function reset;
 use function str_contains;
 use function str_replace;
 use function strtolower;
+
 use function strtoupper;
 use function substr;
-
-use const GLOB_NOSORT;
-use const PREG_PATTERN_ORDER;
 
 /**
  * SystemNodeProvider retrieves the system node ID, if possible

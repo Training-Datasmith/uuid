@@ -14,10 +14,11 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Benchmark;
 
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
-
 use function array_map;
+
+use Ramsey\Uuid\Uuid;
+
+use Ramsey\Uuid\UuidInterface;
 
 final class UuidStringConversionBench
 {

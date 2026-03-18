@@ -14,15 +14,17 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Codec;
 
+use function bin2hex;
+use function hex2bin;
+use function implode;
+
 use Ramsey\Uuid\Builder\UuidBuilderInterface;
 use Ramsey\Uuid\Exception\InvalidArgumentException;
+
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-use function bin2hex;
-use function hex2bin;
-use function implode;
 use function sprintf;
 use function str_replace;
 use function strlen;

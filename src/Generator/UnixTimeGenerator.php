@@ -14,21 +14,27 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Generator;
 
+use function assert;
+
 use Brick\Math\BigInteger;
 use DateTimeInterface;
-use Ramsey\Uuid\Type\Hexadecimal;
 
-use function assert;
 use function hash;
 use function pack;
-use function str_pad;
-use function strlen;
-use function substr;
-use function substr_replace;
-use function unpack;
 
 use const PHP_INT_SIZE;
+
+use Ramsey\Uuid\Type\Hexadecimal;
+
+use function str_pad;
+
 use const STR_PAD_LEFT;
+
+use function strlen;
+use function substr;
+
+use function substr_replace;
+use function unpack;
 
 /**
  * UnixTimeGenerator generates bytes, combining a 48-bit timestamp in milliseconds since the Unix Epoch with 80 random bits

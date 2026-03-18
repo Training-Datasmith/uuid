@@ -14,14 +14,16 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Converter\Time;
 
+use function explode;
+
 use Ramsey\Uuid\Converter\TimeConverterInterface;
 use Ramsey\Uuid\Math\CalculatorInterface;
 use Ramsey\Uuid\Math\RoundingMode;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
+
 use Ramsey\Uuid\Type\Time;
 
-use function explode;
 use function str_pad;
 
 use const STR_PAD_LEFT;

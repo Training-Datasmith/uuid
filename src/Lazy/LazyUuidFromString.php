@@ -14,7 +14,13 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Lazy;
 
+use function assert;
+use function bin2hex;
+
 use DateTimeInterface;
+
+use function hex2bin;
+
 use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
 use Ramsey\Uuid\Fields\FieldsInterface;
@@ -22,16 +28,15 @@ use Ramsey\Uuid\Rfc4122\UuidV1;
 use Ramsey\Uuid\Rfc4122\UuidV6;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
+
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidInterface;
-use ValueError;
 
-use function assert;
-use function bin2hex;
-use function hex2bin;
 use function sprintf;
 use function str_replace;
 use function substr;
+
+use ValueError;
 
 /**
  * Lazy version of a UUID: its format has not been determined yet, so it is mostly only usable for string/bytes

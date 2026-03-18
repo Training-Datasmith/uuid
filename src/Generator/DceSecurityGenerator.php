@@ -14,21 +14,25 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Generator;
 
+use function hex2bin;
+use function in_array;
+use function pack;
+
 use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Exception\DceSecurityException;
 use Ramsey\Uuid\Provider\DceSecurityProviderInterface;
+
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
 use Ramsey\Uuid\Uuid;
 
-use function hex2bin;
-use function in_array;
-use function pack;
 use function str_pad;
-use function strlen;
-use function substr_replace;
 
 use const STR_PAD_LEFT;
+
+use function strlen;
+
+use function substr_replace;
 
 /**
  * DceSecurityGenerator generates strings of binary data based on a local domain, local identifier, node ID, clock

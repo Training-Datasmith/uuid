@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Generator;
 
+use function hash;
+use function pack;
+
 use Ramsey\Uuid\BinaryUtils;
 use Ramsey\Uuid\Exception\NameException;
 use Ramsey\Uuid\Generator\PeclUuidNameGenerator;
+
 use Ramsey\Uuid\Test\TestCase;
 use Ramsey\Uuid\Uuid;
 
-use function hash;
-use function pack;
 use function substr;
 use function substr_replace;
 use function unpack;

@@ -4,20 +4,23 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Provider\Node;
 
+use function array_shift;
+use function array_walk;
+use function gettype;
+
+use const GLOB_NOSORT;
+
+use function is_array;
+
+use phpmock\spy\Spy;
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Exception\NodeException;
 use Ramsey\Uuid\Provider\Node\SystemNodeProvider;
 use Ramsey\Uuid\Test\TestCase;
-use phpmock\spy\Spy;
 
-use function array_shift;
-use function array_walk;
-use function gettype;
-use function is_array;
 use function strlen;
-use function vsprintf;
 
-use const GLOB_NOSORT;
+use function vsprintf;
 
 /**
  * Tests for the SystemNodeProvider class

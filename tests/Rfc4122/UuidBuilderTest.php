@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Test\Rfc4122;
 
+use function hex2bin;
+
 use Mockery;
 use Ramsey\Uuid\Codec\StringCodec;
 use Ramsey\Uuid\Converter\Number\GenericNumberConverter;
@@ -24,9 +26,9 @@ use Ramsey\Uuid\Rfc4122\UuidV5;
 use Ramsey\Uuid\Rfc4122\UuidV6;
 use Ramsey\Uuid\Rfc4122\UuidV7;
 use Ramsey\Uuid\Rfc4122\UuidV8;
+
 use Ramsey\Uuid\Test\TestCase;
 
-use function hex2bin;
 use function str_replace;
 
 class UuidBuilderTest extends TestCase

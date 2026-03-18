@@ -1,19 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ramsey\Uuid\Test;
 
 use Brick\Math\BigInteger;
 use Ramsey\Uuid\Builder\DegradedUuidBuilder;
-use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Codec\OrderedTimeCodec;
 use Ramsey\Uuid\Codec\TimestampFirstCombCodec;
 use Ramsey\Uuid\Converter\Number\DegradedNumberConverter;
-use Ramsey\Uuid\Converter\Time\DegradedTimeConverter;
-use Ramsey\Uuid\Converter\TimeConverterInterface;
-use Ramsey\Uuid\DegradedUuid;
 use Ramsey\Uuid\Generator\CombGenerator;
 use Ramsey\Uuid\Generator\DefaultTimeGenerator;
-use Ramsey\Uuid\Math\BrickMathCalculator;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Time;
 use Ramsey\Uuid\Uuid;

@@ -14,10 +14,12 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Codec;
 
+use function bin2hex;
+
 use Ramsey\Uuid\Guid\Guid;
+
 use Ramsey\Uuid\UuidInterface;
 
-use function bin2hex;
 use function sprintf;
 use function substr;
 
