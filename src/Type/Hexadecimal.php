@@ -125,7 +125,6 @@ final class Hexadecimal implements TypeInterface
             throw new InvalidArgumentException('Value must be a hexadecimal number');
         }
 
-        /** @var non-empty-string */
         return $value;
     }
 }

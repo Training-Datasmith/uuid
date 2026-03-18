@@ -104,25 +104,12 @@ class SystemNodeProvider implements NodeProviderInterface
         $phpOs = constant('PHP_OS');
 
         ob_start();
-        switch (strtoupper(substr($phpOs, 0, 3))) {
-            case 'WIN':
-                passthru('ipconfig /all 2>&1');
-
-                break;
-            case 'DAR':
-                passthru('ifconfig 2>&1');
-
-                break;
-            case 'FRE':
-                passthru('netstat -i -f link 2>&1');
-
-                break;
-            case 'LIN':
-            default:
-                passthru('netstat -ie 2>&1');
-
-                break;
-        }
+        match (strtoupper(substr($phpOs, 0, 3))) {
+            'WIN' => passthru('ipconfig /all 2>&1'),
+            'DAR' => passthru('ifconfig 2>&1'),
+            'FRE' => passthru('netstat -i -f link 2>&1'),
+            default => passthru('netstat -ie 2>&1'),
+        };
 
         $ifconfig = (string) ob_get_clean();
 

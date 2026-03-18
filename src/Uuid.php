@@ -241,11 +241,6 @@ class Uuid implements UuidInterface
      */
     private static bool $factoryReplaced = false;
 
-    protected CodecInterface $codec;
-    protected NumberConverterInterface $numberConverter;
-    protected Rfc4122FieldsInterface $fields;
-    protected TimeConverterInterface $timeConverter;
-
     /**
      * Creates a universally unique identifier (UUID) from an array of fields
      *
@@ -267,16 +262,8 @@ class Uuid implements UuidInterface
      * @param TimeConverterInterface $timeConverter The time converter to use for converting timestamps extracted from a
      *     UUID to unix timestamps
      */
-    public function __construct(
-        Rfc4122FieldsInterface $fields,
-        NumberConverterInterface $numberConverter,
-        CodecInterface $codec,
-        TimeConverterInterface $timeConverter,
-    ) {
-        $this->fields = $fields;
-        $this->codec = $codec;
-        $this->numberConverter = $numberConverter;
-        $this->timeConverter = $timeConverter;
+    public function __construct(protected Rfc4122FieldsInterface $fields, protected NumberConverterInterface $numberConverter, protected CodecInterface $codec, protected TimeConverterInterface $timeConverter)
+    {
     }
 
     /**

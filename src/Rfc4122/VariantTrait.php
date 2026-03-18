@@ -79,12 +79,14 @@ trait VariantTrait
         // a string containing a binary representation, padded to 16 characters. We analyze the first three characters
         // (three most-significant bits) to determine the variant.
         $msb = substr(str_pad(decbin($parts[5]), 16, '0', STR_PAD_LEFT), 0, 3);
-
         if ($msb === '111') {
             return Uuid::RESERVED_FUTURE;
-        } elseif ($msb === '110') {
+        }
+        if ($msb === '110') {
             return Uuid::RESERVED_MICROSOFT;
-        } elseif (str_starts_with($msb, '10')) {
+        }
+
+        if (str_starts_with($msb, '10')) {
             return Uuid::RFC_4122;
         }
 

@@ -53,6 +53,6 @@ class NodeProviderCollection extends AbstractCollection
         ]);
 
         /** @phpstan-ignore-next-line */
-        $this->data = array_filter($data, fn ($unserialized): bool => $unserialized instanceof NodeProviderInterface);
+        $this->data = array_filter($data, fn (\Ramsey\Uuid\Provider\NodeProviderInterface $unserialized): bool => $unserialized instanceof NodeProviderInterface);
     }
 }

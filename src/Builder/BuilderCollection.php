@@ -68,10 +68,9 @@ class BuilderCollection extends AbstractCollection
 
         $this->data = array_filter(
             $data,
-            function ($unserialized): bool {
+            
                 /** @phpstan-ignore instanceof.alwaysTrue */
-                return $unserialized instanceof UuidBuilderInterface;
-            },
+                fn(\Ramsey\Uuid\Builder\UuidBuilderInterface $unserialized): bool => $unserialized instanceof UuidBuilderInterface,
         );
     }
 }
