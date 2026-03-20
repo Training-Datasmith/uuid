@@ -9,30 +9,23 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Nonstandard;
 
-use Ramsey\Uuid\Codec\CodecInterface;
-use Ramsey\Uuid\Converter\NumberConverterInterface;
-use Ramsey\Uuid\Converter\TimeConverterInterface;
+use Ramsey\Uuid\Codec\Codec_Interface;
+use Ramsey\Uuid\Converter\Number_Converter_Interface;
+use Ramsey\Uuid\Converter\Time_Converter_Interface;
 use Ramsey\Uuid\Uuid as BaseUuid;
-
 /**
  * Nonstandard\Uuid is a UUID that doesn't conform to RFC 9562 (formerly RFC 4122)
  *
  * @immutable
  * @pure
  */
-final class Uuid extends BaseUuid
+final class Uuid extends Base_Uuid
 {
-    public function __construct(
-        Fields $fields,
-        NumberConverterInterface $numberConverter,
-        CodecInterface $codec,
-        TimeConverterInterface $timeConverter,
-    ) {
-        parent::__construct($fields, $numberConverter, $codec, $timeConverter);
+    public function __construct(Fields $fields, Number_Converter_Interface $number_converter, Codec_Interface $codec, Time_Converter_Interface $time_converter)
+    {
+        parent::__construct($fields, $number_converter, $codec, $time_converter);
     }
 }

@@ -9,9 +9,7 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Converter;
 
 /**
@@ -19,7 +17,7 @@ namespace Ramsey\Uuid\Converter;
  *
  * @immutable
  */
-interface NumberConverterInterface
+interface Number_Converter_Interface
 {
     /**
      * Converts a hexadecimal number into a string integer representation of the number
@@ -33,8 +31,7 @@ interface NumberConverterInterface
      *
      * @pure
      */
-    public function fromHex(string $hex): string;
-
+    public function from_hex(string $hex): string;
     /**
      * Converts a string integer representation into a hexadecimal string representation of the number
      *
@@ -45,5 +42,5 @@ interface NumberConverterInterface
      *
      * @pure
      */
-    public function toHex(string $number): string;
+    public function to_hex(string $number): string;
 }

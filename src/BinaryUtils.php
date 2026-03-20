@@ -9,15 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid;
 
 /**
  * Provides binary math utilities
  */
-class BinaryUtils
+class Binary_Utils
 {
     /**
      * Applies the variant field to the 16-bit clock sequence
@@ -30,11 +28,10 @@ class BinaryUtils
      *
      * @pure
      */
-    public static function applyVariant(int $clockSeq): int
+    public static function apply_variant(int $clock_seq): int
     {
-        return ($clockSeq & 0x3fff) | 0x8000;
+        return $clock_seq & 0x3fff | 0x8000;
     }
-
     /**
      * Applies the version field to the 16-bit `time_hi_and_version` field
      *
@@ -47,8 +44,8 @@ class BinaryUtils
      *
      * @pure
      */
-    public static function applyVersion(int $timeHi, int $version): int
+    public static function apply_version(int $time_hi, int $version): int
     {
-        return ($timeHi & 0x0fff) | ($version << 12);
+        return $time_hi & 0xfff | $version << 12;
     }
 }

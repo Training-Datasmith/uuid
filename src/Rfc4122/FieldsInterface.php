@@ -9,14 +9,11 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Rfc4122;
 
-use Ramsey\Uuid\Fields\FieldsInterface as BaseFieldsInterface;
+use Ramsey\Uuid\Fields\Fields_Interface as BaseFieldsInterface;
 use Ramsey\Uuid\Type\Hexadecimal;
-
 /**
  * UUID fields, as defined by RFC 4122
  *
@@ -38,48 +35,40 @@ use Ramsey\Uuid\Type\Hexadecimal;
  *
  * @immutable
  */
-interface FieldsInterface extends BaseFieldsInterface
+interface Fields_Interface extends Base_Fields_Interface
 {
     /**
      * Returns the full 16-bit clock sequence, with the variant bits (two most significant bits) masked out
      */
-    public function getClockSeq(): Hexadecimal;
-
+    public function get_clock_seq(): Hexadecimal;
     /**
      * Returns the high field of the clock sequence multiplexed with the variant
      */
-    public function getClockSeqHiAndReserved(): Hexadecimal;
-
+    public function get_clock_seq_hi_and_reserved(): Hexadecimal;
     /**
      * Returns the low field of the clock sequence
      */
-    public function getClockSeqLow(): Hexadecimal;
-
+    public function get_clock_seq_low(): Hexadecimal;
     /**
      * Returns the node field
      */
-    public function getNode(): Hexadecimal;
-
+    public function get_node(): Hexadecimal;
     /**
      * Returns the high field of the timestamp multiplexed with the version
      */
-    public function getTimeHiAndVersion(): Hexadecimal;
-
+    public function get_time_hi_and_version(): Hexadecimal;
     /**
      * Returns the low field of the timestamp
      */
-    public function getTimeLow(): Hexadecimal;
-
+    public function get_time_low(): Hexadecimal;
     /**
      * Returns the middle field of the timestamp
      */
-    public function getTimeMid(): Hexadecimal;
-
+    public function get_time_mid(): Hexadecimal;
     /**
      * Returns the full 60-bit timestamp, without the version
      */
-    public function getTimestamp(): Hexadecimal;
-
+    public function get_timestamp(): Hexadecimal;
     /**
      * Returns the variant
      *
@@ -94,8 +83,7 @@ interface FieldsInterface extends BaseFieldsInterface
      *
      * @link https://www.rfc-editor.org/rfc/rfc9562#section-4.1 RFC 9562, 4.1. Variant Field
      */
-    public function getVariant(): int;
-
+    public function get_variant(): int;
     /**
      * Returns the UUID version
      *
@@ -117,8 +105,7 @@ interface FieldsInterface extends BaseFieldsInterface
      *
      * @pure
      */
-    public function getVersion(): ?int;
-
+    public function get_version(): ?int;
     /**
      * Returns true if these fields represent a nil UUID
      *
@@ -126,5 +113,5 @@ interface FieldsInterface extends BaseFieldsInterface
      *
      * @pure
      */
-    public function isNil(): bool;
+    public function is_nil(): bool;
 }

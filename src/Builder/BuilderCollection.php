@@ -9,21 +9,18 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Builder;
 
-use Ramsey\Collection\AbstractCollection;
-use Ramsey\Uuid\Converter\Number\GenericNumberConverter;
-use Ramsey\Uuid\Converter\Time\GenericTimeConverter;
-use Ramsey\Uuid\Converter\Time\PhpTimeConverter;
-use Ramsey\Uuid\Guid\GuidBuilder;
-use Ramsey\Uuid\Math\BrickMathCalculator;
-use Ramsey\Uuid\Nonstandard\UuidBuilder as NonstandardUuidBuilder;
-use Ramsey\Uuid\Rfc4122\UuidBuilder as Rfc4122UuidBuilder;
+use Ramsey\Collection\Abstract_Collection;
+use Ramsey\Uuid\Converter\Number\Generic_Number_Converter;
+use Ramsey\Uuid\Converter\Time\Generic_Time_Converter;
+use Ramsey\Uuid\Converter\Time\Php_Time_Converter;
+use Ramsey\Uuid\Guid\Guid_Builder;
+use Ramsey\Uuid\Math\Brick_Math_Calculator;
+use Ramsey\Uuid\Nonstandard\Uuid_Builder as NonstandardUuidBuilder;
+use Ramsey\Uuid\Rfc4122\Uuid_Builder as Rfc4122UuidBuilder;
 use Traversable;
-
 /**
  * A collection of UuidBuilderInterface objects
  *
@@ -34,18 +31,16 @@ use Traversable;
  *
  * @extends AbstractCollection<UuidBuilderInterface>
  */
-class BuilderCollection extends AbstractCollection
+class Builder_Collection extends Abstract_Collection
 {
-    public function getType(): string
+    public function get_type(): string
     {
-        return UuidBuilderInterface::class;
+        return Uuid_Builder_Interface::class;
     }
-
     public function getIterator(): Traversable
     {
         return parent::getIterator();
     }
-
     /**
      * Re-constructs the object from its serialized form
      *
@@ -54,23 +49,11 @@ class BuilderCollection extends AbstractCollection
     public function unserialize($serialized): void
     {
         /** @var array<array-key, UuidBuilderInterface> $data */
-        $data = unserialize($serialized, [
-            'allowed_classes' => [
-                BrickMathCalculator::class,
-                GenericNumberConverter::class,
-                GenericTimeConverter::class,
-                GuidBuilder::class,
-                NonstandardUuidBuilder::class,
-                PhpTimeConverter::class,
-                Rfc4122UuidBuilder::class,
-            ],
-        ]);
-
+        $data = unserialize($serialized, ['allowed_classes' => [Brick_Math_Calculator::class, Generic_Number_Converter::class, Generic_Time_Converter::class, Guid_Builder::class, Nonstandard_Uuid_Builder::class, Php_Time_Converter::class, Rfc4122uuid_Builder::class]]);
         $this->data = array_filter(
             $data,
-
             /** @phpstan-ignore instanceof.alwaysTrue */
-            fn (\Ramsey\Uuid\Builder\UuidBuilderInterface $unserialized): bool => $unserialized instanceof UuidBuilderInterface,
+            fn(\Ramsey\Uuid\Builder\Uuid_Builder_Interface $unserialized): bool => $unserialized instanceof Uuid_Builder_Interface
         );
     }
 }

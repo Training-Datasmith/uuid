@@ -9,25 +9,22 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Fields;
 
 use Serializable;
-
 /**
  * UUIDs consist of unsigned integers, the bytes of which are separated into fields and arranged in a particular layout
  * defined by the specification for the variant
  *
  * @immutable
  */
-interface FieldsInterface extends Serializable
+interface Fields_Interface extends Serializable
 {
     /**
      * Returns the bytes that comprise the fields
      *
      * @pure
      */
-    public function getBytes(): string;
+    public function get_bytes(): string;
 }

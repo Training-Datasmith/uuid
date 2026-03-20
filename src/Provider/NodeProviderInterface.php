@@ -9,22 +9,19 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Provider;
 
 use Ramsey\Uuid\Type\Hexadecimal;
-
 /**
  * A node provider retrieves or generates a node ID
  */
-interface NodeProviderInterface
+interface Node_Provider_Interface
 {
     /**
      * Returns a node ID
      *
      * @return Hexadecimal The node ID as a hexadecimal string
      */
-    public function getNode(): Hexadecimal;
+    public function get_node(): Hexadecimal;
 }

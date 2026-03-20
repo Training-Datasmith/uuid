@@ -9,20 +9,17 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Builder;
 
-use Ramsey\Uuid\Codec\CodecInterface;
-use Ramsey\Uuid\UuidInterface;
-
+use Ramsey\Uuid\Codec\Codec_Interface;
+use Ramsey\Uuid\Uuid_Interface;
 /**
  * A UUID builder builds instances of UuidInterface
  *
  * @immutable
  */
-interface UuidBuilderInterface
+interface Uuid_Builder_Interface
 {
     /**
      * Builds and returns a UuidInterface
@@ -34,5 +31,5 @@ interface UuidBuilderInterface
      *
      * @pure
      */
-    public function build(CodecInterface $codec, string $bytes): UuidInterface;
+    public function build(Codec_Interface $codec, string $bytes): Uuid_Interface;
 }

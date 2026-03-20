@@ -9,20 +9,17 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Provider;
 
 use Ramsey\Uuid\Type\Time;
-
 /**
  * A time provider retrieves the current time
  */
-interface TimeProviderInterface
+interface Time_Provider_Interface
 {
     /**
      * Returns a time object
      */
-    public function getTime(): Time;
+    public function get_time(): Time;
 }

@@ -9,20 +9,17 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Converter;
 
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Time;
-
 /**
  * A time converter converts timestamps into representations that may be used in UUIDs
  *
  * @immutable
  */
-interface TimeConverterInterface
+interface Time_Converter_Interface
 {
     /**
      * Uses the provided seconds and micro-seconds to calculate the count of 100-nanosecond intervals since
@@ -37,8 +34,7 @@ interface TimeConverterInterface
      *
      * @pure
      */
-    public function calculateTime(string $seconds, string $microseconds): Hexadecimal;
-
+    public function calculate_time(string $seconds, string $microseconds): Hexadecimal;
     /**
      * Converts a timestamp extracted from a UUID to a Unix timestamp
      *
@@ -49,5 +45,5 @@ interface TimeConverterInterface
      *
      * @pure
      */
-    public function convertTime(Hexadecimal $uuidTimestamp): Time;
+    public function convert_time(Hexadecimal $uuid_timestamp): Time;
 }

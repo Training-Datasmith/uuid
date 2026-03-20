@@ -9,16 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 use RuntimeException as PhpRuntimeException;
-
 /**
  * Thrown to indicate that no suitable builder could be found
  */
-class BuilderNotFoundException extends PhpRuntimeException implements UuidExceptionInterface
+class Builder_Not_Found_Exception extends Php_Runtime_Exception implements Uuid_Exception_Interface
 {
 }

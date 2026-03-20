@@ -9,14 +9,11 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Converter\Number;
 
-use Ramsey\Uuid\Converter\NumberConverterInterface;
-use Ramsey\Uuid\Math\BrickMathCalculator;
-
+use Ramsey\Uuid\Converter\Number_Converter_Interface;
+use Ramsey\Uuid\Math\Brick_Math_Calculator;
 /**
  * Previously used to integrate moontoast/math as a bignum arithmetic library, BigNumberConverter is deprecated in favor
  * of GenericNumberConverter
@@ -25,28 +22,25 @@ use Ramsey\Uuid\Math\BrickMathCalculator;
  *
  * @immutable
  */
-class BigNumberConverter implements NumberConverterInterface
+class Big_Number_Converter implements Number_Converter_Interface
 {
-    private NumberConverterInterface $converter;
-
+    private Number_Converter_Interface $converter;
     public function __construct()
     {
-        $this->converter = new GenericNumberConverter(new BrickMathCalculator());
+        $this->converter = new Generic_Number_Converter(new Brick_Math_Calculator());
     }
-
     /**
      * @pure
      */
-    public function fromHex(string $hex): string
+    public function from_hex(string $hex): string
     {
-        return $this->converter->fromHex($hex);
+        return $this->converter->from_hex($hex);
     }
-
     /**
      * @pure
      */
-    public function toHex(string $number): string
+    public function to_hex(string $number): string
     {
-        return $this->converter->toHex($number);
+        return $this->converter->to_hex($number);
     }
 }

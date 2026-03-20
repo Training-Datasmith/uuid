@@ -9,51 +9,42 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Fields;
 
 use function base64_decode;
-
 use function sprintf;
 use function strlen;
-
-use ValueError;
-
+use Value_Error;
 /**
  * Provides common serialization functionality to fields
  *
  * @immutable
  */
-trait SerializableFieldsTrait
+trait Serializable_Fields_Trait
 {
     /**
      * @param string $bytes The bytes that comprise the fields
      */
     abstract public function __construct(string $bytes);
-
     /**
      * Returns the bytes that comprise the fields
      */
-    abstract public function getBytes(): string;
-
+    abstract public function get_bytes(): string;
     /**
      * Returns a string representation of the object
      */
     public function serialize(): string
     {
-        return $this->getBytes();
+        return $this->get_bytes();
     }
-
     /**
      * @return array{bytes: string}
      */
     public function __serialize(): array
     {
-        return ['bytes' => $this->getBytes()];
+        return ['bytes' => $this->get_bytes()];
     }
-
     /**
      * Constructs the object from a serialized string representation
      *
@@ -67,7 +58,6 @@ trait SerializableFieldsTrait
             $this->__construct(base64_decode($data));
         }
     }
-
     /**
      * @param array{bytes?: string} $data
      */
@@ -75,10 +65,9 @@ trait SerializableFieldsTrait
     {
         // @codeCoverageIgnoreStart
         if (!isset($data['bytes'])) {
-            throw new ValueError(sprintf('%s(): Argument #1 ($data) is invalid', __METHOD__));
+            throw new Value_Error(sprintf('%s(): Argument #1 ($data) is invalid', __METHOD__));
         }
         // @codeCoverageIgnoreEnd
-
         $this->unserialize($data['bytes']);
     }
 }

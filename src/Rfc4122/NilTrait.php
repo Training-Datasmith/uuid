@@ -9,9 +9,7 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Rfc4122;
 
 /**
@@ -19,20 +17,19 @@ namespace Ramsey\Uuid\Rfc4122;
  *
  * @immutable
  */
-trait NilTrait
+trait Nil_Trait
 {
     /**
      * Returns the bytes that comprise the fields
      *
      * @pure
      */
-    abstract public function getBytes(): string;
-
+    abstract public function get_bytes(): string;
     /**
      * Returns true if the byte string represents a nil UUID
      */
-    public function isNil(): bool
+    public function is_nil(): bool
     {
-        return $this->getBytes() === "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+        return $this->get_bytes() === "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00";
     }
 }

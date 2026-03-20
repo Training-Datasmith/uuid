@@ -9,20 +9,17 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
-use Ramsey\Uuid\Exception\RandomSourceException;
+use Ramsey\Uuid\Exception\Random_Source_Exception;
 use Throwable;
-
 /**
  * RandomBytesGenerator generates strings of random binary data using the built-in `random_bytes()` PHP function
  *
  * @link http://php.net/random_bytes random_bytes()
  */
-class RandomBytesGenerator implements RandomGeneratorInterface
+class Random_Bytes_Generator implements Random_Generator_Interface
 {
     /**
      * @throws RandomSourceException if random_bytes() throws an exception/error
@@ -34,7 +31,7 @@ class RandomBytesGenerator implements RandomGeneratorInterface
         try {
             return random_bytes($length);
         } catch (Throwable $exception) {
-            throw new RandomSourceException($exception->getMessage(), (int) $exception->getCode(), $exception);
+            throw new Random_Source_Exception($exception->get_message(), (int) $exception->get_code(), $exception);
         }
     }
 }

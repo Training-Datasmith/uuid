@@ -9,21 +9,19 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
 /**
  * NameGeneratorFactory retrieves a default name generator, based on the environment
  */
-class NameGeneratorFactory
+class Name_Generator_Factory
 {
     /**
      * Returns a default name generator, based on the current environment
      */
-    public function getGenerator(): NameGeneratorInterface
+    public function get_generator(): Name_Generator_Interface
     {
-        return new DefaultNameGenerator();
+        return new Default_Name_Generator();
     }
 }

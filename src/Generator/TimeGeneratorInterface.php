@@ -9,17 +9,14 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
 use Ramsey\Uuid\Type\Hexadecimal;
-
 /**
  * A time generator generates strings of binary data based on a node ID, clock sequence, and the current time
  */
-interface TimeGeneratorInterface
+interface Time_Generator_Interface
 {
     /**
      * Generate a binary string from a node ID, clock sequence, and current time
@@ -31,5 +28,5 @@ interface TimeGeneratorInterface
      *
      * @return string A binary string
      */
-    public function generate($node = null, ?int $clockSeq = null): string;
+    public function generate($node = null, ?int $clock_seq = null): string;
 }

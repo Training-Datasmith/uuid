@@ -9,40 +9,35 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Converter\Number;
 
-use Ramsey\Uuid\Converter\NumberConverterInterface;
-use Ramsey\Uuid\Math\CalculatorInterface;
+use Ramsey\Uuid\Converter\Number_Converter_Interface;
+use Ramsey\Uuid\Math\Calculator_Interface;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-
 /**
  * GenericNumberConverter uses the provided calculator to convert decimal numbers to and from hexadecimal values
  *
  * @immutable
  */
-class GenericNumberConverter implements NumberConverterInterface
+class Generic_Number_Converter implements Number_Converter_Interface
 {
-    public function __construct(private CalculatorInterface $calculator)
+    public function __construct(private Calculator_Interface $calculator)
     {
     }
-
     /**
      * @pure
      */
-    public function fromHex(string $hex): string
+    public function from_hex(string $hex): string
     {
-        return $this->calculator->fromBase($hex, 16)->toString();
+        return $this->calculator->from_base($hex, 16)->to_string();
     }
-
     /**
      * @pure
      */
-    public function toHex(string $number): string
+    public function to_hex(string $number): string
     {
         /** @phpstan-ignore return.type, possiblyImpure.new */
-        return $this->calculator->toBase(new IntegerObject($number), 16);
+        return $this->calculator->to_base(new Integer_Object($number), 16);
     }
 }

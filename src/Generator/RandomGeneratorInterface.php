@@ -9,15 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
 /**
  * A random generator generates strings of random binary data
  */
-interface RandomGeneratorInterface
+interface Random_Generator_Interface
 {
     /**
      * Generates a string of randomized binary data

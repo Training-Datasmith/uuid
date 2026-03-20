@@ -9,16 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 use RuntimeException as PhpRuntimeException;
-
 /**
  * Thrown to indicate that the PHP DateTime extension encountered an exception/error
  */
-class DateTimeException extends PhpRuntimeException implements UuidExceptionInterface
+class Date_Time_Exception extends Php_Runtime_Exception implements Uuid_Exception_Interface
 {
 }

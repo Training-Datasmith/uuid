@@ -9,18 +9,15 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
-use Ramsey\Uuid\UuidInterface;
-
+use Ramsey\Uuid\Uuid_Interface;
 /**
  * A name generator generates strings of binary data created by hashing together a namespace with a name, according to a
  * hashing algorithm
  */
-interface NameGeneratorInterface
+interface Name_Generator_Interface
 {
     /**
      * Generate a binary string from a namespace and name hashed together with the specified hashing algorithm
@@ -33,5 +30,5 @@ interface NameGeneratorInterface
      *
      * @pure
      */
-    public function generate(UuidInterface $ns, string $name, string $hashAlgorithm): string;
+    public function generate(Uuid_Interface $ns, string $name, string $hash_algorithm): string;
 }

@@ -9,13 +9,10 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 use Throwable;
-
-interface UuidExceptionInterface extends Throwable
+interface Uuid_Exception_Interface extends Throwable
 {
 }

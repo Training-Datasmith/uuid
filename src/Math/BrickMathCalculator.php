@@ -9,146 +9,101 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Math;
 
-use Brick\Math\BigDecimal;
-use Brick\Math\BigInteger;
-use Brick\Math\Exception\MathException;
-use Brick\Math\RoundingMode as BrickMathRounding;
+use Brick\Math\Big_Decimal;
+use Brick\Math\Big_Integer;
+use Brick\Math\Exception\Math_Exception;
+use Brick\Math\Rounding_Mode as BrickMathRounding;
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Type\Decimal;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-use Ramsey\Uuid\Type\NumberInterface;
-
+use Ramsey\Uuid\Type\Number_Interface;
 /**
  * A calculator using the brick/math library for arbitrary-precision arithmetic
  *
  * @immutable
  */
-final class BrickMathCalculator implements CalculatorInterface
+final class Brick_Math_Calculator implements Calculator_Interface
 {
-    private const ROUNDING_MODE_MAP = [
-        RoundingMode::UNNECESSARY => BrickMathRounding::UNNECESSARY,
-        RoundingMode::UP => BrickMathRounding::UP,
-        RoundingMode::DOWN => BrickMathRounding::DOWN,
-        RoundingMode::CEILING => BrickMathRounding::CEILING,
-        RoundingMode::FLOOR => BrickMathRounding::FLOOR,
-        RoundingMode::HALF_UP => BrickMathRounding::HALF_UP,
-        RoundingMode::HALF_DOWN => BrickMathRounding::HALF_DOWN,
-        RoundingMode::HALF_CEILING => BrickMathRounding::HALF_CEILING,
-        RoundingMode::HALF_FLOOR => BrickMathRounding::HALF_FLOOR,
-        RoundingMode::HALF_EVEN => BrickMathRounding::HALF_EVEN,
-    ];
-
-    public function add(NumberInterface $augend, NumberInterface ...$addends): NumberInterface
+    private const ROUNDING_MODE_MAP = [Rounding_Mode::UNNECESSARY => Brick_Math_Rounding::UNNECESSARY, Rounding_Mode::UP => Brick_Math_Rounding::UP, Rounding_Mode::DOWN => Brick_Math_Rounding::DOWN, Rounding_Mode::CEILING => Brick_Math_Rounding::CEILING, Rounding_Mode::FLOOR => Brick_Math_Rounding::FLOOR, Rounding_Mode::HALF_UP => Brick_Math_Rounding::HALF_UP, Rounding_Mode::HALF_DOWN => Brick_Math_Rounding::HALF_DOWN, Rounding_Mode::HALF_CEILING => Brick_Math_Rounding::HALF_CEILING, Rounding_Mode::HALF_FLOOR => Brick_Math_Rounding::HALF_FLOOR, Rounding_Mode::HALF_EVEN => Brick_Math_Rounding::HALF_EVEN];
+    public function add(Number_Interface $augend, Number_Interface ...$addends): Number_Interface
     {
-        $sum = BigInteger::of($augend->toString());
-
+        $sum = Big_Integer::of($augend->to_string());
         foreach ($addends as $addend) {
-            $sum = $sum->plus($addend->toString());
+            $sum = $sum->plus($addend->to_string());
         }
-
         /** @phpstan-ignore possiblyImpure.new */
-        return new IntegerObject((string) $sum);
+        return new Integer_Object((string) $sum);
     }
-
-    public function subtract(NumberInterface $minuend, NumberInterface ...$subtrahends): NumberInterface
+    public function subtract(Number_Interface $minuend, Number_Interface ...$subtrahends): Number_Interface
     {
-        $difference = BigInteger::of($minuend->toString());
-
+        $difference = Big_Integer::of($minuend->to_string());
         foreach ($subtrahends as $subtrahend) {
-            $difference = $difference->minus($subtrahend->toString());
+            $difference = $difference->minus($subtrahend->to_string());
         }
-
         /** @phpstan-ignore possiblyImpure.new */
-        return new IntegerObject((string) $difference);
+        return new Integer_Object((string) $difference);
     }
-
-    public function multiply(NumberInterface $multiplicand, NumberInterface ...$multipliers): NumberInterface
+    public function multiply(Number_Interface $multiplicand, Number_Interface ...$multipliers): Number_Interface
     {
-        $product = BigInteger::of($multiplicand->toString());
-
+        $product = Big_Integer::of($multiplicand->to_string());
         foreach ($multipliers as $multiplier) {
-            $product = $product->multipliedBy($multiplier->toString());
+            $product = $product->multiplied_by($multiplier->to_string());
         }
-
         /** @phpstan-ignore possiblyImpure.new */
-        return new IntegerObject((string) $product);
+        return new Integer_Object((string) $product);
     }
-
-    public function divide(
-        int $roundingMode,
-        int $scale,
-        NumberInterface $dividend,
-        NumberInterface ...$divisors,
-    ): NumberInterface {
+    public function divide(int $rounding_mode, int $scale, Number_Interface $dividend, Number_Interface ...$divisors): Number_Interface
+    {
         /** @phpstan-ignore possiblyImpure.methodCall */
-        $brickRounding = $this->getBrickRoundingMode($roundingMode);
-
-        $quotient = BigDecimal::of($dividend->toString());
-
+        $brick_rounding = $this->get_brick_rounding_mode($rounding_mode);
+        $quotient = Big_Decimal::of($dividend->to_string());
         foreach ($divisors as $divisor) {
-            $quotient = $quotient->dividedBy($divisor->toString(), $scale, $brickRounding);
+            $quotient = $quotient->divided_by($divisor->to_string(), $scale, $brick_rounding);
         }
-
         if ($scale === 0) {
             /** @phpstan-ignore possiblyImpure.new */
-            return new IntegerObject((string) $quotient->toBigInteger());
+            return new Integer_Object((string) $quotient->to_big_integer());
         }
-
         /** @phpstan-ignore possiblyImpure.new */
         return new Decimal((string) $quotient);
     }
-
-    public function fromBase(string $value, int $base): IntegerObject
+    public function from_base(string $value, int $base): Integer_Object
     {
         try {
             /** @phpstan-ignore possiblyImpure.new */
-            return new IntegerObject((string) BigInteger::fromBase($value, $base));
-        } catch (MathException | \InvalidArgumentException $exception) {
-            throw new InvalidArgumentException(
-                $exception->getMessage(),
-                (int) $exception->getCode(),
-                $exception
-            );
+            return new Integer_Object((string) Big_Integer::from_base($value, $base));
+        } catch (Math_Exception|\InvalidArgumentException $exception) {
+            throw new InvalidArgumentException($exception->get_message(), (int) $exception->get_code(), $exception);
         }
     }
-
-    public function toBase(IntegerObject $value, int $base): string
+    public function to_base(Integer_Object $value, int $base): string
     {
         try {
-            return BigInteger::of($value->toString())->toBase($base);
-        } catch (MathException | \InvalidArgumentException $exception) {
-            throw new InvalidArgumentException(
-                $exception->getMessage(),
-                (int) $exception->getCode(),
-                $exception
-            );
+            return Big_Integer::of($value->to_string())->to_base($base);
+        } catch (Math_Exception|\InvalidArgumentException $exception) {
+            throw new InvalidArgumentException($exception->get_message(), (int) $exception->get_code(), $exception);
         }
     }
-
-    public function toHexadecimal(IntegerObject $value): Hexadecimal
+    public function to_hexadecimal(Integer_Object $value): Hexadecimal
     {
         /** @phpstan-ignore possiblyImpure.new */
-        return new Hexadecimal($this->toBase($value, 16));
+        return new Hexadecimal($this->to_base($value, 16));
     }
-
-    public function toInteger(Hexadecimal $value): IntegerObject
+    public function to_integer(Hexadecimal $value): Integer_Object
     {
-        return $this->fromBase($value->toString(), 16);
+        return $this->from_base($value->to_string(), 16);
     }
-
     /**
      * Maps ramsey/uuid rounding modes to those used by brick/math
      *
      * @return BrickMathRounding::*
      */
-    private function getBrickRoundingMode(int $roundingMode)
+    private function get_brick_rounding_mode(int $rounding_mode)
     {
-        return self::ROUNDING_MODE_MAP[$roundingMode] ?? BrickMathRounding::UNNECESSARY;
+        return self::ROUNDING_MODE_MAP[$rounding_mode] ?? Brick_Math_Rounding::UNNECESSARY;
     }
 }

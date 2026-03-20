@@ -9,32 +9,25 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
-use Ramsey\Uuid\Converter\TimeConverterInterface;
-use Ramsey\Uuid\Provider\NodeProviderInterface;
-use Ramsey\Uuid\Provider\TimeProviderInterface;
-
+use Ramsey\Uuid\Converter\Time_Converter_Interface;
+use Ramsey\Uuid\Provider\Node_Provider_Interface;
+use Ramsey\Uuid\Provider\Time_Provider_Interface;
 /**
  * TimeGeneratorFactory retrieves a default time generator, based on the environment
  */
-class TimeGeneratorFactory
+class Time_Generator_Factory
 {
-    public function __construct(
-        private NodeProviderInterface $nodeProvider,
-        private TimeConverterInterface $timeConverter,
-        private TimeProviderInterface $timeProvider,
-    ) {
+    public function __construct(private Node_Provider_Interface $node_provider, private Time_Converter_Interface $time_converter, private Time_Provider_Interface $time_provider)
+    {
     }
-
     /**
      * Returns a default time generator, based on the current environment
      */
-    public function getGenerator(): TimeGeneratorInterface
+    public function get_generator(): Time_Generator_Interface
     {
-        return new DefaultTimeGenerator($this->nodeProvider, $this->timeConverter, $this->timeProvider);
+        return new Default_Time_Generator($this->node_provider, $this->time_converter, $this->time_provider);
     }
 }

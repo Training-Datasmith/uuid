@@ -9,22 +9,17 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Rfc4122;
 
 use function hexdec;
-
-use Ramsey\Uuid\Codec\CodecInterface;
-use Ramsey\Uuid\Converter\NumberConverterInterface;
-use Ramsey\Uuid\Converter\TimeConverterInterface;
+use Ramsey\Uuid\Codec\Codec_Interface;
+use Ramsey\Uuid\Converter\Number_Converter_Interface;
+use Ramsey\Uuid\Converter\Time_Converter_Interface;
 use Ramsey\Uuid\Exception\InvalidArgumentException;
-use Ramsey\Uuid\Rfc4122\FieldsInterface as Rfc4122FieldsInterface;
+use Ramsey\Uuid\Rfc4122\Fields_Interface as Rfc4122FieldsInterface;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-
 use Ramsey\Uuid\Uuid;
-
 /**
  * DCE Security version, or version 2, UUIDs include local domain identifier, local ID for the specified domain, and
  * node values that are combined into a 128-bit unsigned integer
@@ -48,10 +43,9 @@ use Ramsey\Uuid\Uuid;
  *
  * @immutable
  */
-final class UuidV2 extends Uuid implements UuidInterface
+final class Uuid_V2 extends Uuid implements Uuid_Interface
 {
-    use TimeTrait;
-
+    use Time_Trait;
     /**
      * Creates a version 2 (DCE Security) UUID
      *
@@ -61,48 +55,36 @@ final class UuidV2 extends Uuid implements UuidInterface
      * @param TimeConverterInterface $timeConverter The time converter to use for converting timestamps extracted from a
      *     UUID to unix timestamps
      */
-    public function __construct(
-        Rfc4122FieldsInterface $fields,
-        NumberConverterInterface $numberConverter,
-        CodecInterface $codec,
-        TimeConverterInterface $timeConverter,
-    ) {
-        if ($fields->getVersion() !== Uuid::UUID_TYPE_DCE_SECURITY) {
-            throw new InvalidArgumentException(
-                'Fields used to create a UuidV2 must represent a version 2 (DCE Security) UUID'
-            );
+    public function __construct(Rfc4122fields_Interface $fields, Number_Converter_Interface $number_converter, Codec_Interface $codec, Time_Converter_Interface $time_converter)
+    {
+        if ($fields->get_version() !== Uuid::UUID_TYPE_DCE_SECURITY) {
+            throw new InvalidArgumentException('Fields used to create a UuidV2 must represent a version 2 (DCE Security) UUID');
         }
-
-        parent::__construct($fields, $numberConverter, $codec, $timeConverter);
+        parent::__construct($fields, $number_converter, $codec, $time_converter);
     }
-
     /**
      * Returns the local domain used to create this version 2 UUID
      */
-    public function getLocalDomain(): int
+    public function get_local_domain(): int
     {
         /** @var Rfc4122FieldsInterface $fields */
-        $fields = $this->getFields();
-
-        return (int) hexdec($fields->getClockSeqLow()->toString());
+        $fields = $this->get_fields();
+        return (int) hexdec($fields->get_clock_seq_low()->to_string());
     }
-
     /**
      * Returns the string name of the local domain
      */
-    public function getLocalDomainName(): string
+    public function get_local_domain_name(): string
     {
-        return Uuid::DCE_DOMAIN_NAMES[$this->getLocalDomain()];
+        return Uuid::DCE_DOMAIN_NAMES[$this->get_local_domain()];
     }
-
     /**
      * Returns the local identifier for the domain used to create this version 2 UUID
      */
-    public function getLocalIdentifier(): IntegerObject
+    public function get_local_identifier(): Integer_Object
     {
         /** @var Rfc4122FieldsInterface $fields */
-        $fields = $this->getFields();
-
-        return new IntegerObject($this->numberConverter->fromHex($fields->getTimeLow()->toString()));
+        $fields = $this->get_fields();
+        return new Integer_Object($this->number_converter->from_hex($fields->get_time_low()->to_string()));
     }
 }

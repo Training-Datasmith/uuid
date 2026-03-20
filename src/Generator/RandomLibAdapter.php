@@ -9,14 +9,11 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
-use RandomLib\Factory;
-use RandomLib\Generator;
-
+use Random_Lib\Factory;
+use Random_Lib\Generator;
 /**
  * RandomLibAdapter generates strings of random binary data using the paragonie/random-lib library
  *
@@ -25,10 +22,9 @@ use RandomLib\Generator;
  *
  * @link https://packagist.org/packages/paragonie/random-lib paragonie/random-lib
  */
-class RandomLibAdapter implements RandomGeneratorInterface
+class Random_Lib_Adapter implements Random_Generator_Interface
 {
     private Generator $generator;
-
     /**
      * Constructs a RandomLibAdapter
      *
@@ -41,12 +37,10 @@ class RandomLibAdapter implements RandomGeneratorInterface
     {
         if ($generator === null) {
             $factory = new Factory();
-            $generator = $factory->getHighStrengthGenerator();
+            $generator = $factory->get_high_strength_generator();
         }
-
         $this->generator = $generator;
     }
-
     public function generate(int $length): string
     {
         return $this->generator->generate($length);

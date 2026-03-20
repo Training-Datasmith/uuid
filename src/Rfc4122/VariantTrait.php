@@ -9,39 +9,29 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Rfc4122;
 
 use function decbin;
-
-use Ramsey\Uuid\Exception\InvalidBytesException;
-
+use Ramsey\Uuid\Exception\Invalid_Bytes_Exception;
 use Ramsey\Uuid\Uuid;
-
 use function str_pad;
-
 use const STR_PAD_LEFT;
-
 use function str_starts_with;
 use function strlen;
 use function substr;
-
 use function unpack;
-
 /**
  * Provides common functionality for handling the variant, as defined by RFC 9562 (formerly RFC 4122)
  *
  * @immutable
  */
-trait VariantTrait
+trait Variant_Trait
 {
     /**
      * Returns the bytes that comprise the fields
      */
-    abstract public function getBytes(): string;
-
+    abstract public function get_bytes(): string;
     /**
      * Returns the variant
      *
@@ -56,29 +46,25 @@ trait VariantTrait
      *
      * @link https://www.rfc-editor.org/rfc/rfc9562#section-4.1 RFC 9562, 4.1. Variant Field
      */
-    public function getVariant(): int
+    public function get_variant(): int
     {
-        if (strlen($this->getBytes()) !== 16) {
-            throw new InvalidBytesException('Invalid number of bytes');
+        if (strlen($this->get_bytes()) !== 16) {
+            throw new Invalid_Bytes_Exception('Invalid number of bytes');
         }
-
         // According to RFC 9562, sections {@link https://www.rfc-editor.org/rfc/rfc9562#section-4.1 4.1} and
         // {@link https://www.rfc-editor.org/rfc/rfc9562#section-5.10 5.10}, the Max UUID falls within the range
         // of the future variant.
-        if ($this->isMax()) {
+        if ($this->is_max()) {
             return Uuid::RESERVED_FUTURE;
         }
-
         // According to RFC 9562, sections {@link https://www.rfc-editor.org/rfc/rfc9562#section-4.1 4.1} and
         // {@link https://www.rfc-editor.org/rfc/rfc9562#section-5.9 5.9}, the Nil UUID falls within the range
         // of the Apollo NCS variant.
-        if ($this->isNil()) {
+        if ($this->is_nil()) {
             return Uuid::RESERVED_NCS;
         }
-
         /** @var int[] $parts */
-        $parts = unpack('n*', $this->getBytes());
-
+        $parts = unpack('n*', $this->get_bytes());
         // $parts[5] is a 16-bit, unsigned integer containing the variant bits of the UUID. We convert this integer into
         // a string containing a binary representation, padded to 16 characters. We analyze the first three characters
         // (three most-significant bits) to determine the variant.
@@ -89,11 +75,9 @@ trait VariantTrait
         if ($msb === '110') {
             return Uuid::RESERVED_MICROSOFT;
         }
-
         if (str_starts_with($msb, '10')) {
             return Uuid::RFC_4122;
         }
-
         return Uuid::RESERVED_NCS;
     }
 }

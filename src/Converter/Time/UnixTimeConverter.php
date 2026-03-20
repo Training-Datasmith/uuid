@@ -9,85 +9,54 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Converter\Time;
 
 use function explode;
-
-use Ramsey\Uuid\Converter\TimeConverterInterface;
-use Ramsey\Uuid\Math\CalculatorInterface;
-use Ramsey\Uuid\Math\RoundingMode;
+use Ramsey\Uuid\Converter\Time_Converter_Interface;
+use Ramsey\Uuid\Math\Calculator_Interface;
+use Ramsey\Uuid\Math\Rounding_Mode;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-
 use Ramsey\Uuid\Type\Time;
-
 use function str_pad;
-
 use const STR_PAD_LEFT;
-
 /**
  * UnixTimeConverter converts Unix Epoch timestamps to/from hexadecimal values consisting of milliseconds elapsed since
  * the Unix Epoch
  *
  * @immutable
  */
-class UnixTimeConverter implements TimeConverterInterface
+class Unix_Time_Converter implements Time_Converter_Interface
 {
     private const MILLISECONDS = 1000;
-
-    public function __construct(private CalculatorInterface $calculator)
+    public function __construct(private Calculator_Interface $calculator)
     {
     }
-
-    public function calculateTime(string $seconds, string $microseconds): Hexadecimal
+    public function calculate_time(string $seconds, string $microseconds): Hexadecimal
     {
         /** @phpstan-ignore possiblyImpure.new */
         $timestamp = new Time($seconds, $microseconds);
-
         // Convert the seconds into milliseconds.
-        $sec = $this->calculator->multiply(
-            $timestamp->getSeconds(),
-            new IntegerObject(self::MILLISECONDS) /** @phpstan-ignore possiblyImpure.new */
-        );
-
+        $sec = $this->calculator->multiply($timestamp->get_seconds(), new Integer_Object(self::MILLISECONDS));
         // Convert the microseconds into milliseconds; the scale is zero because we need to discard the fractional part.
         $usec = $this->calculator->divide(
-            RoundingMode::DOWN, // Always round down to stay in the previous millisecond.
+            Rounding_Mode::DOWN,
+            // Always round down to stay in the previous millisecond.
             0,
-            $timestamp->getMicroseconds(),
-            new IntegerObject(self::MILLISECONDS), /** @phpstan-ignore possiblyImpure.new */
+            $timestamp->get_microseconds(),
+            new Integer_Object(self::MILLISECONDS)
         );
-
         /** @var IntegerObject $unixTime */
-        $unixTime = $this->calculator->add($sec, $usec);
-
+        $unix_time = $this->calculator->add($sec, $usec);
         /** @phpstan-ignore possiblyImpure.new */
-        return new Hexadecimal(
-            str_pad(
-                $this->calculator->toHexadecimal($unixTime)->toString(),
-                12,
-                '0',
-                STR_PAD_LEFT
-            ),
-        );
+        return new Hexadecimal(str_pad($this->calculator->to_hexadecimal($unix_time)->to_string(), 12, '0', STR_PAD_LEFT));
     }
-
-    public function convertTime(Hexadecimal $uuidTimestamp): Time
+    public function convert_time(Hexadecimal $uuid_timestamp): Time
     {
-        $milliseconds = $this->calculator->toInteger($uuidTimestamp);
-
-        $unixTimestamp = $this->calculator->divide(
-            RoundingMode::HALF_UP,
-            6,
-            $milliseconds,
-            new IntegerObject(self::MILLISECONDS), /** @phpstan-ignore possiblyImpure.new */
-        );
-
-        $split = explode('.', (string) $unixTimestamp, 2);
-
+        $milliseconds = $this->calculator->to_integer($uuid_timestamp);
+        $unix_timestamp = $this->calculator->divide(Rounding_Mode::HALF_UP, 6, $milliseconds, new Integer_Object(self::MILLISECONDS));
+        $split = explode('.', (string) $unix_timestamp, 2);
         /** @phpstan-ignore possiblyImpure.new */
         return new Time($split[0], $split[1] ?? '0');
     }

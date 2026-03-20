@@ -9,15 +9,12 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Provider\Node;
 
-use Ramsey\Collection\AbstractCollection;
-use Ramsey\Uuid\Provider\NodeProviderInterface;
+use Ramsey\Collection\Abstract_Collection;
+use Ramsey\Uuid\Provider\Node_Provider_Interface;
 use Ramsey\Uuid\Type\Hexadecimal;
-
 /**
  * A collection of NodeProviderInterface objects
  *
@@ -28,13 +25,12 @@ use Ramsey\Uuid\Type\Hexadecimal;
  *
  * @extends AbstractCollection<NodeProviderInterface>
  */
-class NodeProviderCollection extends AbstractCollection
+class Node_Provider_Collection extends Abstract_Collection
 {
-    public function getType(): string
+    public function get_type(): string
     {
-        return NodeProviderInterface::class;
+        return Node_Provider_Interface::class;
     }
-
     /**
      * Re-constructs the object from its serialized form
      *
@@ -43,16 +39,8 @@ class NodeProviderCollection extends AbstractCollection
     public function unserialize($serialized): void
     {
         /** @var array<array-key, NodeProviderInterface> $data */
-        $data = unserialize($serialized, [
-            'allowed_classes' => [
-                Hexadecimal::class,
-                RandomNodeProvider::class,
-                StaticNodeProvider::class,
-                SystemNodeProvider::class,
-            ],
-        ]);
-
+        $data = unserialize($serialized, ['allowed_classes' => [Hexadecimal::class, Random_Node_Provider::class, Static_Node_Provider::class, System_Node_Provider::class]]);
         /** @phpstan-ignore-next-line */
-        $this->data = array_filter($data, fn (\Ramsey\Uuid\Provider\NodeProviderInterface $unserialized): bool => $unserialized instanceof NodeProviderInterface);
+        $this->data = array_filter($data, fn(\Ramsey\Uuid\Provider\Node_Provider_Interface $unserialized): bool => $unserialized instanceof Node_Provider_Interface);
     }
 }

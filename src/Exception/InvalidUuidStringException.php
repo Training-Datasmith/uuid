@@ -9,9 +9,7 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 /**
@@ -20,6 +18,6 @@ namespace Ramsey\Uuid\Exception;
  * The InvalidArgumentException that this extends is the ramsey/uuid version of this exception. It exists in the same
  * namespace as this class.
  */
-class InvalidUuidStringException extends InvalidArgumentException implements UuidExceptionInterface
+class Invalid_Uuid_String_Exception extends InvalidArgumentException implements Uuid_Exception_Interface
 {
 }

@@ -9,16 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 use RuntimeException as PhpRuntimeException;
-
 /**
  * Thrown to indicate that the bytes being operated on are invalid in some way
  */
-class InvalidBytesException extends PhpRuntimeException implements UuidExceptionInterface
+class Invalid_Bytes_Exception extends Php_Runtime_Exception implements Uuid_Exception_Interface
 {
 }

@@ -9,26 +9,20 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Provider\Time;
 
 use function gettimeofday;
-
-use Ramsey\Uuid\Provider\TimeProviderInterface;
-
+use Ramsey\Uuid\Provider\Time_Provider_Interface;
 use Ramsey\Uuid\Type\Time;
-
 /**
  * SystemTimeProvider retrieves the current time using built-in PHP functions
  */
-class SystemTimeProvider implements TimeProviderInterface
+class System_Time_Provider implements Time_Provider_Interface
 {
-    public function getTime(): Time
+    public function get_time(): Time
     {
         $time = gettimeofday();
-
         return new Time($time['sec'], $time['usec']);
     }
 }

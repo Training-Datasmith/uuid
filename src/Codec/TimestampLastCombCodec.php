@@ -9,9 +9,7 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Codec;
 
 /**
@@ -43,6 +41,6 @@ namespace Ramsey\Uuid\Codec;
  *
  * @immutable
  */
-class TimestampLastCombCodec extends StringCodec
+class Timestamp_Last_Comb_Codec extends String_Codec
 {
 }

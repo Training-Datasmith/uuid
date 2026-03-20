@@ -9,21 +9,19 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
 /**
  * RandomGeneratorFactory retrieves a default random generator, based on the environment
  */
-class RandomGeneratorFactory
+class Random_Generator_Factory
 {
     /**
      * Returns a default random generator, based on the current environment
      */
-    public function getGenerator(): RandomGeneratorInterface
+    public function get_generator(): Random_Generator_Interface
     {
-        return new RandomBytesGenerator();
+        return new Random_Bytes_Generator();
     }
 }

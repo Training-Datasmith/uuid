@@ -9,13 +9,10 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Rfc4122;
 
-use Ramsey\Uuid\UuidInterface as BaseUuidInterface;
-
+use Ramsey\Uuid\Uuid_Interface as BaseUuidInterface;
 /**
  * A universally unique identifier (UUID), as defined in RFC 9562 (formerly RFC 4122)
  *
@@ -23,6 +20,6 @@ use Ramsey\Uuid\UuidInterface as BaseUuidInterface;
  *
  * @immutable
  */
-interface UuidInterface extends BaseUuidInterface
+interface Uuid_Interface extends Base_Uuid_Interface
 {
 }

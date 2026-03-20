@@ -9,20 +9,16 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Codec;
 
 use Ramsey\Uuid\Exception\InvalidArgumentException;
-use Ramsey\Uuid\Exception\UnsupportedOperationException;
-use Ramsey\Uuid\Rfc4122\FieldsInterface as Rfc4122FieldsInterface;
+use Ramsey\Uuid\Exception\Unsupported_Operation_Exception;
+use Ramsey\Uuid\Rfc4122\Fields_Interface as Rfc4122FieldsInterface;
 use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
-
+use Ramsey\Uuid\Uuid_Interface;
 use function strlen;
 use function substr;
-
 /**
  * OrderedTimeCodec encodes and decodes a UUID, optimizing the byte order for more efficient storage
  *
@@ -41,32 +37,22 @@ use function substr;
  *
  * @immutable
  */
-class OrderedTimeCodec extends StringCodec
+class Ordered_Time_Codec extends String_Codec
 {
     /**
      * Returns a binary string representation of a UUID, with the timestamp fields rearranged for optimized storage
      *
      * @return non-empty-string
      */
-    public function encodeBinary(UuidInterface $uuid): string
+    public function encode_binary(Uuid_Interface $uuid): string
     {
-        if (
-            /** @phpstan-ignore possiblyImpure.methodCall */
-            !($uuid->getFields() instanceof Rfc4122FieldsInterface)
-            /** @phpstan-ignore possiblyImpure.methodCall */
-            || $uuid->getFields()->getVersion() !== Uuid::UUID_TYPE_TIME
-        ) {
+        if (!$uuid->get_fields() instanceof Rfc4122fields_Interface || $uuid->get_fields()->get_version() !== Uuid::UUID_TYPE_TIME) {
             throw new InvalidArgumentException('Expected version 1 (time-based) UUID');
         }
-
         /** @phpstan-ignore possiblyImpure.methodCall */
-        $bytes = $uuid->getFields()->getBytes();
-
-        return $bytes[6] . $bytes[7] . $bytes[4] . $bytes[5]
-            . $bytes[0] . $bytes[1] . $bytes[2] . $bytes[3]
-            . substr($bytes, 8);
+        $bytes = $uuid->get_fields()->get_bytes();
+        return $bytes[6] . $bytes[7] . $bytes[4] . $bytes[5] . $bytes[0] . $bytes[1] . $bytes[2] . $bytes[3] . substr($bytes, 8);
     }
-
     /**
      * Returns a UuidInterface derived from an ordered-time binary string representation
      *
@@ -74,28 +60,19 @@ class OrderedTimeCodec extends StringCodec
      *
      * @inheritDoc
      */
-    public function decodeBytes(string $bytes): UuidInterface
+    public function decode_bytes(string $bytes): Uuid_Interface
     {
         if (strlen($bytes) !== 16) {
             throw new InvalidArgumentException('$bytes string should contain 16 characters.');
         }
-
         // Rearrange the bytes to their original order.
-        $rearrangedBytes = $bytes[4] . $bytes[5] . $bytes[6] . $bytes[7]
-            . $bytes[2] . $bytes[3] . $bytes[0] . $bytes[1]
-            . substr($bytes, 8);
-
-        $uuid = parent::decodeBytes($rearrangedBytes);
-
+        $rearranged_bytes = $bytes[4] . $bytes[5] . $bytes[6] . $bytes[7] . $bytes[2] . $bytes[3] . $bytes[0] . $bytes[1] . substr($bytes, 8);
+        $uuid = parent::decode_bytes($rearranged_bytes);
         /** @phpstan-ignore possiblyImpure.methodCall */
-        $fields = $uuid->getFields();
-
-        if (!$fields instanceof Rfc4122FieldsInterface || $fields->getVersion() !== Uuid::UUID_TYPE_TIME) {
-            throw new UnsupportedOperationException(
-                'Attempting to decode a non-time-based UUID using OrderedTimeCodec',
-            );
+        $fields = $uuid->get_fields();
+        if (!$fields instanceof Rfc4122fields_Interface || $fields->get_version() !== Uuid::UUID_TYPE_TIME) {
+            throw new Unsupported_Operation_Exception('Attempting to decode a non-time-based UUID using OrderedTimeCodec');
         }
-
         return $uuid;
     }
 }

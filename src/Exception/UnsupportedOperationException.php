@@ -9,16 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 use LogicException as PhpLogicException;
-
 /**
  * Thrown to indicate that the requested operation is not supported
  */
-class UnsupportedOperationException extends PhpLogicException implements UuidExceptionInterface
+class Unsupported_Operation_Exception extends Php_Logic_Exception implements Uuid_Exception_Interface
 {
 }

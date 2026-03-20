@@ -9,22 +9,19 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Generator;
 
-use Ramsey\Uuid\Rfc4122\UuidV2;
+use Ramsey\Uuid\Rfc4122\Uuid_V2;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-
 /**
  * A DCE Security generator generates strings of binary data based on a local domain, local identifier, node ID, clock
  * sequence, and the current time
  *
  * @see UuidV2
  */
-interface DceSecurityGeneratorInterface
+interface Dce_Security_Generator_Interface
 {
     /**
      * Generate a binary string from a local domain, local identifier, node ID, clock sequence, and current time
@@ -39,10 +36,5 @@ interface DceSecurityGeneratorInterface
      *
      * @return string A binary string
      */
-    public function generate(
-        int $localDomain,
-        ?IntegerObject $localIdentifier = null,
-        ?Hexadecimal $node = null,
-        ?int $clockSeq = null,
-    ): string;
+    public function generate(int $local_domain, ?Integer_Object $local_identifier = null, ?Hexadecimal $node = null, ?int $clock_seq = null): string;
 }

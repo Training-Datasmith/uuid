@@ -10,15 +10,12 @@
  * @license http://opensource.org/licenses/MIT MIT
  * phpcs:disable Squiz.Functions.GlobalFunction
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid;
 
 use DateTimeInterface;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
-
 /**
  * Returns a version 1 (Gregorian time) UUID from a host ID, sequence number, and the current time
  *
@@ -29,11 +26,10 @@ use Ramsey\Uuid\Type\Integer as IntegerObject;
  *
  * @return non-empty-string Version 1 UUID as a string
  */
-function v1($node = null, ?int $clockSeq = null): string
+function v1($node = null, ?int $clock_seq = null): string
 {
-    return Uuid::uuid1($node, $clockSeq)->toString();
+    return Uuid::uuid1($node, $clock_seq)->to_string();
 }
-
 /**
  * Returns a version 2 (DCE Security) UUID from a local domain, local identifier, host ID, clock sequence, and the current time
  *
@@ -47,15 +43,10 @@ function v1($node = null, ?int $clockSeq = null): string
  *
  * @return non-empty-string Version 2 UUID as a string
  */
-function v2(
-    int $localDomain,
-    ?IntegerObject $localIdentifier = null,
-    ?Hexadecimal $node = null,
-    ?int $clockSeq = null,
-): string {
-    return Uuid::uuid2($localDomain, $localIdentifier, $node, $clockSeq)->toString();
+function v2(int $local_domain, ?Integer_Object $local_identifier = null, ?Hexadecimal $node = null, ?int $clock_seq = null): string
+{
+    return Uuid::uuid2($local_domain, $local_identifier, $node, $clock_seq)->to_string();
 }
-
 /**
  * Returns a version 3 (name-based) UUID based on the MD5 hash of a namespace ID and a name
  *
@@ -67,9 +58,8 @@ function v2(
  */
 function v3($ns, string $name): string
 {
-    return Uuid::uuid3($ns, $name)->toString();
+    return Uuid::uuid3($ns, $name)->to_string();
 }
-
 /**
  * Returns a version 4 (random) UUID
  *
@@ -77,9 +67,8 @@ function v3($ns, string $name): string
  */
 function v4(): string
 {
-    return Uuid::uuid4()->toString();
+    return Uuid::uuid4()->to_string();
 }
-
 /**
  * Returns a version 5 (name-based) UUID based on the SHA-1 hash of a namespace ID and a name
  *
@@ -91,9 +80,8 @@ function v4(): string
  */
 function v5($ns, string $name): string
 {
-    return Uuid::uuid5($ns, $name)->toString();
+    return Uuid::uuid5($ns, $name)->to_string();
 }
-
 /**
  * Returns a version 6 (reordered Gregorian time) UUID from a host ID, sequence number, and the current time
  *
@@ -103,11 +91,10 @@ function v5($ns, string $name): string
  *
  * @return non-empty-string Version 6 UUID as a string
  */
-function v6(?Hexadecimal $node = null, ?int $clockSeq = null): string
+function v6(?Hexadecimal $node = null, ?int $clock_seq = null): string
 {
-    return Uuid::uuid6($node, $clockSeq)->toString();
+    return Uuid::uuid6($node, $clock_seq)->to_string();
 }
-
 /**
  * Returns a version 7 (Unix Epoch time) UUID
  *
@@ -116,11 +103,10 @@ function v6(?Hexadecimal $node = null, ?int $clockSeq = null): string
  *
  * @return non-empty-string Version 7 UUID as a string
  */
-function v7(?DateTimeInterface $dateTime = null): string
+function v7(?DateTimeInterface $date_time = null): string
 {
-    return Uuid::uuid7($dateTime)->toString();
+    return Uuid::uuid7($date_time)->to_string();
 }
-
 /**
  * Returns a version 8 (custom format) UUID
  *
@@ -137,5 +123,5 @@ function v7(?DateTimeInterface $dateTime = null): string
  */
 function v8(string $bytes): string
 {
-    return Uuid::uuid8($bytes)->toString();
+    return Uuid::uuid8($bytes)->to_string();
 }

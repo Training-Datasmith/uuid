@@ -9,16 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 use InvalidArgumentException as PhpInvalidArgumentException;
-
 /**
  * Thrown to indicate that the argument received is not valid
  */
-class InvalidArgumentException extends PhpInvalidArgumentException implements UuidExceptionInterface
+class InvalidArgumentException extends Php_Invalid_Argument_Exception implements Uuid_Exception_Interface
 {
 }

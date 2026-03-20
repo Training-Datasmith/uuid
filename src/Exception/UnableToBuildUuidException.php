@@ -9,16 +9,13 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Exception;
 
 use RuntimeException as PhpRuntimeException;
-
 /**
  * Thrown to indicate a builder is unable to build a UUID
  */
-class UnableToBuildUuidException extends PhpRuntimeException implements UuidExceptionInterface
+class Unable_To_Build_Uuid_Exception extends Php_Runtime_Exception implements Uuid_Exception_Interface
 {
 }

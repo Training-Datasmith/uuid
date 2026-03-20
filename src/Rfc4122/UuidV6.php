@@ -9,13 +9,10 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Rfc4122;
 
-use Ramsey\Uuid\Nonstandard\UuidV6 as NonstandardUuidV6;
-
+use Ramsey\Uuid\Nonstandard\Uuid_V6 as NonstandardUuidV6;
 /**
  * Reordered Gregorian time, or version 6, UUIDs include timestamp, clock sequence, and node values that are combined
  * into a 128-bit unsigned integer
@@ -24,6 +21,6 @@ use Ramsey\Uuid\Nonstandard\UuidV6 as NonstandardUuidV6;
  *
  * @immutable
  */
-final class UuidV6 extends NonstandardUuidV6 implements UuidInterface
+final class Uuid_V6 extends Nonstandard_Uuid_V6 implements Uuid_Interface
 {
 }

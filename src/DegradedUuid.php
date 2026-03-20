@@ -9,9 +9,7 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid;
 
 /**
@@ -20,6 +18,6 @@ namespace Ramsey\Uuid;
  *
  * @immutable
  */
-class DegradedUuid extends Uuid
+class Degraded_Uuid extends Uuid
 {
 }

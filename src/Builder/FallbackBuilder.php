@@ -9,22 +9,19 @@
  * @copyright Copyright (c) Ben Ramsey <ben@benramsey.com>
  * @license http://opensource.org/licenses/MIT MIT
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Ramsey\Uuid\Builder;
 
-use Ramsey\Uuid\Codec\CodecInterface;
-use Ramsey\Uuid\Exception\BuilderNotFoundException;
-use Ramsey\Uuid\Exception\UnableToBuildUuidException;
-use Ramsey\Uuid\UuidInterface;
-
+use Ramsey\Uuid\Codec\Codec_Interface;
+use Ramsey\Uuid\Exception\Builder_Not_Found_Exception;
+use Ramsey\Uuid\Exception\Unable_To_Build_Uuid_Exception;
+use Ramsey\Uuid\Uuid_Interface;
 /**
  * FallbackBuilder builds a UUID by stepping through a list of UUID builders until a UUID can be constructed without exceptions
  *
  * @immutable
  */
-class FallbackBuilder implements UuidBuilderInterface
+class Fallback_Builder implements Uuid_Builder_Interface
 {
     /**
      * @param iterable<UuidBuilderInterface> $builders An array of UUID builders
@@ -32,7 +29,6 @@ class FallbackBuilder implements UuidBuilderInterface
     public function __construct(private iterable $builders)
     {
     }
-
     /**
      * Builds and returns a UuidInterface instance using the first builder that succeeds
      *
@@ -43,24 +39,17 @@ class FallbackBuilder implements UuidBuilderInterface
      *
      * @pure
      */
-    public function build(CodecInterface $codec, string $bytes): UuidInterface
+    public function build(Codec_Interface $codec, string $bytes): Uuid_Interface
     {
-        $lastBuilderException = null;
-
+        $last_builder_exception = null;
         foreach ($this->builders as $builder) {
             try {
                 return $builder->build($codec, $bytes);
-            } catch (UnableToBuildUuidException $exception) {
-                $lastBuilderException = $exception;
-
+            } catch (Unable_To_Build_Uuid_Exception $exception) {
+                $last_builder_exception = $exception;
                 continue;
             }
         }
-
-        throw new BuilderNotFoundException(
-            'Could not find a suitable builder for the provided codec and fields',
-            0,
-            $lastBuilderException,
-        );
+        throw new Builder_Not_Found_Exception('Could not find a suitable builder for the provided codec and fields', 0, $last_builder_exception);
     }
 }
